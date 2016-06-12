@@ -1,5 +1,7 @@
 class Survey::Survey < ActiveRecord::Base
 
+  before_create :generate_unique_public_id
+
   self.table_name = "survey_surveys"
 
   acceptable_attributes :name, :description,
@@ -50,5 +52,13 @@ class Survey::Survey < ActiveRecord::Base
   # a surveys only can be activated if has one or more questions
   def check_active_requirements
     errors.add(:active, "Survey without questions cannot be activated") if self.active && self.questions.empty?
+  end
+
+  def generate_unique_public_id
+    if self.public_id.nil?
+      begin
+        self.public_id = SecureRandom.urlsafe_base64 20, false
+      end while Survey::Survey.exists?(:public_id => self.public_id)
+    end
   end
 end
