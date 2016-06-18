@@ -3,7 +3,7 @@ en:
     create: Your Survey has been successfully created
     update: Your Survey has been successfully updated
   attempts_controller:
-    create: "Congratulations, you have responded to Survey."
+    create: "Thank you. Your response has been successfully saved."
   surveys: Surveys
   survey_details: Survey Details
   questions: Questions
