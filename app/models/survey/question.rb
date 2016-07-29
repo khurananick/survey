@@ -1,5 +1,5 @@
 class Survey::Question < ActiveRecord::Base
-  enum qtype: [:textarea, :checkbox, :radio, :scale]
+  enum qtype: [:textarea, :checkbox, :radio, :scale, :boolean]
 
   self.table_name = "survey_questions"
 
